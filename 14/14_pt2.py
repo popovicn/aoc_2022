@@ -20,7 +20,7 @@ def _parse_coordinates(line: str):
 
 
 def _go_down(x, y, terrain, max_y):
-    while x in terrain and y+1 not in terrain[x] and y+1 < max_y :
+    while x in terrain and y+1 not in terrain[x] and y+1 < max_y:
         y += 1
     return x, y
 
@@ -50,8 +50,6 @@ def load_terrain(file_name) -> (dict, int):
 def fill_sand(terrain, max_y):
     sand_count, x, y = 0, 500, 0
     while y < max_y and (x, y):
-        # if x not in terrain or y > max(terrain[x]):
-        #     return sand_count
         nx, ny = _go_down(x, y, terrain, max_y)
         nx, ny = _go_sides(nx, ny, terrain, max_y)
         if nx == x and ny == y:
